@@ -28,7 +28,6 @@ class _HomeContentState extends State<HomeContent> {
     return Scaffold(
         body:
         Container(
-            padding: EdgeInsets.only(left: 15,right: 15),
             child:
             ListView(
               children: [
@@ -57,8 +56,8 @@ class _HomeContentState extends State<HomeContent> {
                                   alignment: Alignment.bottomCenter, // 控制位置
                                   margin: EdgeInsets.only(bottom: 12.0), // 控制偏移
                                   builder: DotSwiperPaginationBuilder(
-                                    activeColor: Colors.white,
-                                    color: Colors.red,
+                                    activeColor: AppColors.white,
+                                    color: AppColors.greyFF,
                                     size: 6.0,
                                     activeSize: 8.0,
                                   ),
@@ -72,6 +71,9 @@ class _HomeContentState extends State<HomeContent> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   InkWell(
+                                    onTap: ()=>{
+                                    Navigator.pop(context)
+                                    },
                                     child: Image.asset("assets/slices/返回.png",width: 20.w,),
                                   ),
                                   InkWell(
@@ -87,70 +89,81 @@ class _HomeContentState extends State<HomeContent> {
 
 
 
-
-
-                      Text("美味五香腐皮卷",
-                        style: TextStyle(
-                            color: AppColors.black17,
-                            fontSize: 25.w,
-                          fontWeight: FontWeight.bold
-                        ),
-                      ),
-                      SizedBox(height: 8.w,),
-                      Text("1K+收藏",
-                        style: TextStyle(
-                            color: AppColors.grey26,
-                            fontSize: 14.w
-                        ),
-                      ),
-                      SizedBox(height: 15.w,),
-                      Row(
-                        children: [
-                          Container(
-                            child:
-                            BackShaderText(text:AppText.homeTip, fontWeight: null, padding: EdgeInsets.only(top: 7.w,left: 20.w,right: 20.w,bottom: 7.w), circular: 7.w,),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20.w,),
                       Container(
-
-                        padding: EdgeInsets.all(15.w),
-                        decoration: BoxDecoration(
-                          color: AppColors.greenF6,
-                          borderRadius: BorderRadius.circular(11.w),
-                        ),
+                        padding: EdgeInsets.only(left: 10.h,right: 10.h),
                         child:
-                        Text("尽量采用蒸、煮的方式制作腐皮卷，避免油炸或油煎，减少油脂摄入。蒸制的腐皮卷既能保留食材的营养成分，又更加清爽健康。如果喜欢酥脆口感，可使用空气炸锅，以少量油达到类似油炸的效果。",
-                          style: TextStyle(
-                            color: AppColors.greenB33,
-                            fontSize: 12.w
-                          ),
-                        )
-                      ),
-                      GridView.count(
-                        crossAxisCount: 4, // 每行4个
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 8,
-                        shrinkWrap: true, // 不滚动时加上
-                        physics: NeverScrollableScrollPhysics(), // 禁止内部滚动
-                        children: ingredients.map((item) {
-                          return Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.all(8),
-                            child: Row(
+                        Column(
+                          children: [
+                            Text("美味五香腐皮卷",
+                              style: TextStyle(
+                                  color: AppColors.black17,
+                                  fontSize: 25.w,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                            SizedBox(height: 8.w,),
+                            Text("1K+收藏",
+                              style: TextStyle(
+                                  color: AppColors.grey26,
+                                  fontSize: 14.w
+                              ),
+                            ),
+                            SizedBox(height: 15.w,),
+                            Row(
                               children: [
-                                Image.asset("assets/slices/收藏.png",width: 25.w,),
-                                Text("90分钟",style: TextStyle(
-                                  fontSize: 11.w,
-                                ),)
+                                Container(
+                                  child:
+                                  BackShaderText(text:AppText.homeTip, fontWeight: null, padding: EdgeInsets.only(top: 7.w,left: 20.w,right: 20.w,bottom: 7.w), circular: 7.w,),
+                                ),
                               ],
-                            )
-                          );
-                        }).toList(),
-                      ),
-                      FoodIngredientsItemView(),
-                      StepItemView(),
+                            ),
+                            SizedBox(height: 20.w,),
+                            Container(
+
+                                padding: EdgeInsets.all(15.w),
+                                decoration: BoxDecoration(
+                                  color: AppColors.greenF6,
+                                  borderRadius: BorderRadius.circular(11.w),
+                                ),
+                                child:
+                                Text("尽量采用蒸、煮的方式制作腐皮卷，避免油炸或油煎，减少油脂摄入。蒸制的腐皮卷既能保留食材的营养成分，又更加清爽健康。如果喜欢酥脆口感，可使用空气炸锅，以少量油达到类似油炸的效果。",
+                                  style: TextStyle(
+                                      color: AppColors.greenB33,
+                                      fontSize: 12.w
+                                  ),
+                                )
+                            ),
+                            GridView.count(
+                              crossAxisCount: 4, // 每行4个
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                              shrinkWrap: true, // 不滚动时加上
+                              physics: NeverScrollableScrollPhysics(), // 禁止内部滚动
+                              children: ingredients.map((item) {
+                                return Container(
+                                    alignment: Alignment.center,
+                                    padding: EdgeInsets.all(8),
+                                    child: Row(
+                                      children: [
+                                        Image.asset("assets/slices/收藏.png",width: 25.w,),
+                                        Text("90分钟",style: TextStyle(
+                                          fontSize: 11.w,
+                                        ),)
+                                      ],
+                                    )
+                                );
+                              }).toList(),
+                            ),
+                            FoodIngredientsItemView(),
+                            StepItemView(),
+                            StepItemView(),
+                            StepItemView(),
+                          ],
+                        )
+                      )
+
+
+
                     ],
                   ),
                 )
