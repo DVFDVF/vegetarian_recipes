@@ -78,4 +78,49 @@ class AppText {
   static const String imageLimitNotice = "（最多9张）";
 
 
+// 上传相关
+  static const String uploadSuccess = "上传成功";
+  static const String pendingApprovalMessage = "等待审核，审核通过以后您上传的菜谱展示在应用内";
+
+// 审核流程
+  static const String processTitle = "流程";
+  static const String processStep1 = "1.上传菜谱";
+  static const String processStep2 = "2.待审核";
+  static const String processStep3 = "3.审核通过";
+
+// 审核管理
+  static const String pendingApproval = "待审核";
+  static const String approvalRecords = "审核记录";
+  static const String actionCancelSelectAll = "取消全选";
+  static const String actionDelete = "删除";
+  static const String actionCancel = "取消";
+
+// 设置相关
+  static const String settingsTitle = "设置";
+  static const String settingsFeedback = "改进意见";
+  static const String settingsUserAgreement = "用户协议";
+  static const String settingsPrivacyPolicy = "隐私政策";
+  static const String settingsInviteFriend = "把大树菜谱告诉朋友";
+  static const String settingsRateApp = "帮助大树菜谱评分";
+  static const String settingsClearCache = "清除缓存";
+
+// 意见反馈
+  static const String feedbackTitle = "改进意见";
+  static const String feedbackContentHint = "请输入您的改进意见";
+  static const String feedbackSuggestion = "提意见";
+  static const String feedbackConsultation = "咨询";
+  static const String feedbackOther = "其他";
+  static const String feedbackAddImage = "添加图片";
+
+
+// 搜索相关
+  static const String searchHint = "搜索菜谱，食材";
+  static const String searchHistoryTitle = "最近搜索历史";
+  static const String actionClearHistory = "清空";
+
+
+
+
+
+
 }

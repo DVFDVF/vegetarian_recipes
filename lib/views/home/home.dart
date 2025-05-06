@@ -2,13 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vegetarian_recipes/ScrollView/scrollView.dart';
 import 'package:vegetarian_recipes/button/noBtn.dart';
 import 'package:vegetarian_recipes/configuration%20/app_colors.dart';
+import 'package:vegetarian_recipes/configuration%20/app_text.dart';
 import 'package:vegetarian_recipes/nav/topNav.dart';
 import 'package:vegetarian_recipes/text/noText.dart';
 import 'package:vegetarian_recipes/views/home/HomeContent.dart';
 import 'package:vegetarian_recipes/views/home/evaluate.dart';
+import 'package:vegetarian_recipes/views/search/searchInput.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -25,10 +28,12 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body:
       Container(
-          padding: EdgeInsets.only(left: 15,right: 15),
+          padding: EdgeInsets.only(left: 15.h,right: 15.h,top: 30.h),
+        color: AppColors.white,
         child:
             ListView(
               children: [
+                SearchInput(text: AppText.searchHint, color: AppColors.greyBD, backColor: AppColors.greyF3),
                 Container(
                   padding: EdgeInsets.only(top: 10),
                   child: Column(

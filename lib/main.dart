@@ -6,6 +6,8 @@ import 'package:vegetarian_recipes/tabbar/tabbar.dart';
 import 'package:vegetarian_recipes/utils/GlobalState.dart';
 import 'package:vegetarian_recipes/views/add/add.dart';
 import 'package:vegetarian_recipes/views/add/addContent.dart';
+import 'package:vegetarian_recipes/views/home/home.dart';
+import 'package:vegetarian_recipes/views/search/search.dart';
 
 void main() {
   runApp(
@@ -58,7 +60,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: Add(),
+      home: MyHomePage(),
     );
   }
 }

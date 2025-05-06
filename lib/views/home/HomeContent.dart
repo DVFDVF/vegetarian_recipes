@@ -28,7 +28,7 @@ class _HomeContentState extends State<HomeContent> {
     return Scaffold(
         body:
         Container(
-            // padding: EdgeInsets.only(left: 15,right: 15),
+            padding: EdgeInsets.only(left: 15,right: 15),
             child:
             ListView(
               children: [
