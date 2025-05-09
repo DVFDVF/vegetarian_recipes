@@ -7,8 +7,13 @@ import 'package:vegetarian_recipes/configuration%20/app_colors.dart';
 import 'package:vegetarian_recipes/configuration%20/app_text.dart';
 import 'package:vegetarian_recipes/nav/topNav.dart';
 import 'package:vegetarian_recipes/text/noText.dart';
+import 'package:vegetarian_recipes/views/appBar/appBar.dart';
 import 'package:vegetarian_recipes/views/home/evaluate.dart';
+import 'package:vegetarian_recipes/views/my/Notice.dart';
+import 'package:vegetarian_recipes/views/my/myAdd.dart';
 import 'package:vegetarian_recipes/views/my/myItem.dart';
+import 'package:vegetarian_recipes/views/my/myTime.dart';
+import 'package:vegetarian_recipes/views/setting/setting.dart';
 
 class My extends StatefulWidget {
   const My({super.key});
@@ -19,10 +24,16 @@ class My extends StatefulWidget {
 
 class _MyState extends State<My> {
   void setting(){
-    
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Setting()),
+    );
   }
   void message(){
-
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Notice()),
+    );
   }
   void clickItem(){
 
@@ -30,6 +41,37 @@ class _MyState extends State<My> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: CustomAppBar(left:
+        InkWell(
+            onTap: setting,
+            child:
+            Container(
+              alignment: Alignment.center,
+
+              margin: EdgeInsets.all(10.w),
+              decoration: BoxDecoration(
+                  color: AppColors.greyF3,
+                  borderRadius: BorderRadius.circular(11.h)
+              ),
+              child: Image.asset("assets/slices/设置.png",width: 20.w,),
+            )
+
+        ),
+            title: AppText.appDiscoverEventAction,
+            action: InkWell(
+                onTap: message,
+                child:  Container(
+                  width: 37.w,
+
+                  padding: EdgeInsets.all(10.w),
+                  decoration: BoxDecoration(
+                      color: AppColors.greyF3,
+                      borderRadius: BorderRadius.circular(11.h)
+                  ),
+                  child: Image.asset("assets/slices/消息.png"),
+                )
+            ),
+        ),
         body:
         Container(
 
@@ -42,40 +84,6 @@ class _MyState extends State<My> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                            onTap: setting,
-                            child:
-                            Container(
-                              width: 40.w,
-
-                              padding: EdgeInsets.all(10.w),
-                              decoration: BoxDecoration(
-                                  color: AppColors.greyF3,
-                                  borderRadius: BorderRadius.circular(11.h)
-                              ),
-                              child: Image.asset("assets/slices/设置.png"),
-                            )
-
-                          ),
-                          InkWell(
-                            onTap: setting,
-                            child:  Container(
-                              width: 40.w,
-
-                              padding: EdgeInsets.all(10.w),
-                              decoration: BoxDecoration(
-                                  color: AppColors.greyF3,
-                                  borderRadius: BorderRadius.circular(11.h)
-                              ),
-                              child: Image.asset("assets/slices/消息.png"),
-                            )
-                          )
-                        ],
-                      ),
                       SizedBox(height: 25.h,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,10 +91,10 @@ class _MyState extends State<My> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("清蒸素鲶鱼—M与HSAAI",style: TextStyle(fontSize: 20.h,fontWeight: FontWeight.bold,color: AppColors.black),),
+                              Text("清蒸素鲶鱼—M与HSAAI",style: TextStyle(fontSize: 17.h,fontWeight: FontWeight.w600,color: AppColors.black17),),
                               SizedBox(height: 15,),
-                              Text("人世间，唯有爱与美食不可辜负",style: TextStyle(fontSize: 13.h,fontWeight: FontWeight.normal,color: AppColors.greyA8),),
-                              Text("IP属地：四川成都",style: TextStyle(fontSize: 13.h,fontWeight: FontWeight.normal,color: AppColors.greyA8),),
+                              Text("人世间，唯有爱与美食不可辜负",style: TextStyle(fontSize: 12.h,fontWeight: FontWeight.normal,color: AppColors.greyA8),),
+                              Text("IP属地：四川成都",style: TextStyle(fontSize: 12.h,fontWeight: FontWeight.normal,color: AppColors.greyA8),),
                             ],
                           ),
                           ClipRRect(
@@ -114,11 +122,17 @@ class _MyState extends State<My> {
                   color:  AppColors.greyF1,
                   height: 10.h,
                 ),
+
                 Container(
                   color:  AppColors.white,
-                  padding: EdgeInsets.only(top: 10,left: 15,right: 15),
-                  child:  MyItem(),
-                )
+                  padding: EdgeInsets.only(top: 20,left: 15,right: 15),
+                  child:  MyAdd(),
+                ),
+                Container(
+                  color:  AppColors.white,
+                  padding: EdgeInsets.only(top: 0,left: 15,right: 15),
+                  child:  MyTime(),
+                ),
 
 
               ],

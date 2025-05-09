@@ -64,8 +64,11 @@ class AppText {
   static const String actionConfirm = "确认";
 
 // 菜谱投稿
-  static const String vegetarianTimeTitle = "素食时光的";
+  static const String vegetarianTimeTitle = "素食时光的第";
   static const String recipeSubmissionTitle = "投稿菜谱";
+  static const String welcomeSubmissionTitle = "欢迎您的投稿";
+  static const String gotoSubmissionTitle = "去投稿";
+  static const String submissionTitleTime = "初始时间：";
   static const String recipeNameHint = "添加菜谱名字";
   static const String recipeNameEmptyWarning = "请添加您要上传的菜谱名字";
   static const String addCoverImage = "添加主图";
@@ -92,8 +95,12 @@ class AppText {
   static const String pendingApproval = "待审核";
   static const String approvalRecords = "审核记录";
   static const String actionCancelSelectAll = "取消全选";
+  static const String actionSelectAll = "全选";
   static const String actionDelete = "删除";
   static const String actionCancel = "取消";
+  static const String okApproval = "审核通过";
+  static const String errorApproval = "审核失败";
+
 
 // 设置相关
   static const String settingsTitle = "设置";
@@ -119,8 +126,17 @@ class AppText {
   static const String actionClearHistory = "清空";
 
 
+  static const String vegetarianEventTitle = "参加素食活动报名";
+  static const String vegetarianEventDescriptionTtile = "活动描述";
+  static const String vegetarianEventDescription = "如果您有特别的素食独门秘方，自创菜谱，家传菜谱，或是任何植物基相关菜谱。真诚邀请分享到这里，让更多素食者看到共同经历素生活的美好。我们将会根据投稿菜谱的受欢迎度来选出每期（每月1期）共5位分享者，赠送大树食谱终生VIP会员（后续版本自动升级为终生会员）";
+  static const String vegetarianEventAction = "去报名";
 
-
-
+  static const String vegetarianEventSignupTitle = "活动报名";
+  static const String vegetarianEventScanPrompt = "扫二维码报名";
+  static const String vegetarianEventScanDescription = "扫描以上二维码加入社群 报名参加活动";
+  static const String vegetarianEventScanFailNote = "以上二维码扫不了请联系17834570987";
+  static const String logoutLabel = "退出当前账号";
+  static const String appVersionLabel = "版本号1.1.1";
+  static const String accountM = "账号管理";
 
 }

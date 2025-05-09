@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vegetarian_recipes/configuration%20/app_colors.dart';
 import 'package:vegetarian_recipes/nav/topNav.dart';
 import 'package:vegetarian_recipes/views/collect/collect.dart';
 import 'package:vegetarian_recipes/views/home/home.dart';
@@ -27,6 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return
       SafeArea(child: Scaffold(
+
         body: _pages[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -41,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
           unselectedItemColor: Colors.blue, // 未选中项颜色
           showSelectedLabels: false,           // 始终显示选中项文字
           showUnselectedLabels: false,
+          elevation: 0,
           items: [
             BottomNavigationBarItem(
               icon: Image.asset("assets/slices/首页_${_currentIndex == 0 ? "" : "未"}选中.png",width: 20.h,),

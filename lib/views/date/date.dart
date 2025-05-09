@@ -11,6 +11,7 @@ import 'package:vegetarian_recipes/configuration%20/app_colors.dart';
 import 'package:vegetarian_recipes/configuration%20/app_text.dart';
 import 'package:vegetarian_recipes/nav/topNav.dart';
 import 'package:vegetarian_recipes/text/noText.dart';
+import 'package:vegetarian_recipes/views/appBar/appBar.dart';
 import 'package:vegetarian_recipes/views/home/HomeContent.dart';
 import 'package:vegetarian_recipes/views/home/evaluate.dart';
 
@@ -27,9 +28,12 @@ class _pickerDateState extends State<PickerDate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: CustomAppBar(
+          title: "",
+        ),
         body:
         Container(
-            padding: EdgeInsets.only(left: 15,right: 15),
+
             child:
             ListView(
               children: [
@@ -41,23 +45,29 @@ class _pickerDateState extends State<PickerDate> {
 
                         Container(
                           height: 200.h,
-                          width: 300.w,
+                          width: 500.w,
                           child:
                           Positioned.fill(
                             child: Transform.translate(
                               offset: Offset(-100.w, 0), // 向上移出屏幕 200 像素，可改为负的 X/Y 值
-                              child: ImageFiltered(
-                                imageFilter: ImageFilter.blur(sigmaX: 120.w, sigmaY: 120.w), // 建议别用 500
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      begin: Alignment.centerRight,
-                                      end: Alignment.centerLeft,
-                                      colors: [
-                                        Color(0xFFC5FFE4),
-                                        Color(0xFFE2FFC7),
-                                      ],
-                                    ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.centerRight,
+                                    end: Alignment.centerLeft, // 269deg ≈ 从右到左
+                                    colors: [
+                                      Color(0xFFC5FFE4),
+                                      Color(0xFFC5FFE4),
+                                    ],
+                                  ),
+                                ),
+                                child: BackdropFilter(
+                                  filter: ImageFilter.blur(
+                                    sigmaX: 300.0, // Flutter 不支持 500px 这么极端的模糊，50 已非常强烈
+                                    sigmaY: 300.0,
+                                  ),
+                                  child: Container(
+                                    color: Colors.transparent, // 必须设置透明色来激活 BackdropFilter
                                   ),
                                 ),
                               ),
@@ -67,6 +77,7 @@ class _pickerDateState extends State<PickerDate> {
                         Container(
                           alignment: Alignment.centerLeft,
                           height: 200.h,
+                          padding: EdgeInsets.only(left: 15,right: 15),
                           child:
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

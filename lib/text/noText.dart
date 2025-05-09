@@ -74,23 +74,28 @@ class TabText extends NoText {
 
 
 class ShaderText extends StatelessWidget {
+  final String text;
+  final double fontSize;
+  const ShaderText({
+    super.key, required this.text, required this.fontSize,
 
+  });
   @override
   Widget build(BuildContext context) {
     return
       ShaderMask(
         shaderCallback: (Rect bounds) {
           return LinearGradient(
-            colors: [Colors.blue, Colors.red],
+            colors: [AppColors.greenE4, AppColors.greenC7],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ).createShader(bounds);
         },
         blendMode: BlendMode.srcATop,
         child: Text(
-          '渐变文字',
+          text,
           style: TextStyle(
-            fontSize: 24,
+            fontSize: fontSize,
             color: Colors.white, // 必须设置为白色
           ),
         ),
@@ -142,9 +147,10 @@ class BackShaderText extends StatelessWidget {
 
 class BackShaderDeText extends StatelessWidget {
   final String text;
+  final double? borderRadius;
   const BackShaderDeText({
     super.key,
-    required this.text,
+    required this.text, required this.borderRadius,
   });
   @override
   Widget build(BuildContext context) {
@@ -160,7 +166,7 @@ class BackShaderDeText extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            borderRadius: BorderRadius.circular(8.w)
+            borderRadius: BorderRadius.circular(borderRadius ?? 8.w)
         ),
         child: Text(text,style:TextStyle(
             fontWeight: FontWeight.w600,

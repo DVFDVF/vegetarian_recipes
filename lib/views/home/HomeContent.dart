@@ -24,154 +24,158 @@ class _HomeContentState extends State<HomeContent> {
   ];
 
   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:
-        Container(
-            child:
-            ListView(
-              children: [
-                Container(
-                  // padding: EdgeInsets.only(top: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(13),
+      body: CustomScrollView(
+
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            expandedHeight: 300.h - MediaQuery.of(context).padding.top, // ✅ 设置高度
+            flexibleSpace: FlexibleSpaceBar(
+              background: Stack(
+                children: [
+                  Swiper(
+                    itemBuilder: (context, index) => HomeContentTopImageItemView(),
+                    itemCount: 10,
+                    autoplay: true,
+                    viewportFraction: 1.0,
+                    scale: 1.0,
+                    pagination: SwiperPagination(
+                      alignment: Alignment.bottomCenter,
+                      margin: EdgeInsets.only(bottom: 12.0),
+                      builder: DotSwiperPaginationBuilder(
+                        activeColor: AppColors.white,
+                        color: AppColors.greyFF,
+                        size: 6.0,
+                        activeSize: 8.0,
+                      ),
+                    ),
                   ),
-                  child: Column(
+                ],
+              ),
+            ),
+            backgroundColor: AppColors.greenF58,
+            title: SizedBox(),
+            centerTitle: true,
+            leading: InkWell(
+              onTap: () => Navigator.pop(context),
+              child: Container(
+                alignment: Alignment.center,
+                child:Image.asset("assets/slices/返回.png", width: 20.h, height: 20.h),
+              )
+            ),
+            actions: [
+              IconButton(
+                icon: Image.asset("assets/slices/更多.png",width: 20.h,),
+                onPressed: () {
+                  // 设置按钮点击
+                },
+              ),
+            ],
+          ),
+
+          // 正文内容放在 SliverList 中
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.h),
+                child:
+                Container(
+                  color: AppColors.greyFA,
+                  child:
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Stack(
+                      SizedBox(height: 20.h,),
+                      Text("美味五香腐皮卷",
+                        style: TextStyle(
+                          color: AppColors.black17,
+                          fontSize: 25.w,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 8.w),
+                      Text("1K+收藏",
+                        style: TextStyle(
+                          color: AppColors.grey26,
+                          fontSize: 14.w,
+                        ),
+                      ),
+                      SizedBox(height: 15.w),
+                      Row(
                         children: [
-                          Container(
-                              height: 300.h,
-                              child:
-                              Swiper(
-                                itemBuilder: (BuildContext context, int index) {
-                                  return HomeContentTopImageItemView();
-                                },
-                                itemCount: 10,
-                                autoplay: true,
-                                viewportFraction: 1.0, // 每页占满宽度
-                                scale: 1.0,            // 无缩放，确保全屏显示
-                                pagination: SwiperPagination(
-                                  alignment: Alignment.bottomCenter, // 控制位置
-                                  margin: EdgeInsets.only(bottom: 12.0), // 控制偏移
-                                  builder: DotSwiperPaginationBuilder(
-                                    activeColor: AppColors.white,
-                                    color: AppColors.greyFF,
-                                    size: 6.0,
-                                    activeSize: 8.0,
-                                  ),
-                                ),
-                              )
-                          ),
-                          Container(
-                              padding: EdgeInsets.all(20),
-                              child:
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  InkWell(
-                                    onTap: ()=>{
-                                    Navigator.pop(context)
-                                    },
-                                    child: Image.asset("assets/slices/返回.png",width: 20.w,),
-                                  ),
-                                  InkWell(
-                                    child: Image.asset("assets/slices/更多.png",width: 20.w,),
-                                  )
-
-                                ],
-                              )
+                          BackShaderText(
+                            text: AppText.homeTip,
+                            fontWeight: null,
+                            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 7.w),
+                            circular: 7.w,
                           ),
                         ],
                       ),
-
-
-
-
+                      SizedBox(height: 20.w),
                       Container(
-                        padding: EdgeInsets.only(left: 10.h,right: 10.h),
-                        child:
-                        Column(
-                          children: [
-                            Text("美味五香腐皮卷",
-                              style: TextStyle(
-                                  color: AppColors.black17,
-                                  fontSize: 25.w,
-                                  fontWeight: FontWeight.bold
+                        alignment: Alignment.topLeft,
+                        padding: EdgeInsets.all(15.w),
+                        decoration: BoxDecoration(
+                          color: AppColors.greenF6,
+                          borderRadius: BorderRadius.circular(11.w),
+                        ),
+                        child: Text(
+                          "尽量采用蒸、煮的方式制作腐皮卷，避免油炸或油煎，减少油脂摄入。蒸制的腐皮卷既能保留食材的营养成分，又更加清爽健康。如果喜欢酥脆口感，可使用空气炸锅，以少量油达到类似油炸的效果。",
+                          style: TextStyle(
+                            color: AppColors.greenB33,
+                            fontSize: 12.w,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20.h,),
+                      Row(
+                        children: List.generate(ingredients.length, (index) {
+                          return Expanded( // ← 平均分配宽度
+                            child: Padding(
+                              padding: EdgeInsets.only(bottom: 10.h),
+                              child: Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.symmetric(horizontal: 8.h),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center, // 水平居中内容
+                                  children: [
+                                    Image.asset("assets/slices/收藏.png", width: 25.w),
+                                    SizedBox(width: 4.w), // 图标和文字间距
+                                    Text("90分钟", style: TextStyle(fontSize: 11.w)),
+                                  ],
+                                ),
                               ),
                             ),
-                            SizedBox(height: 8.w,),
-                            Text("1K+收藏",
-                              style: TextStyle(
-                                  color: AppColors.grey26,
-                                  fontSize: 14.w
-                              ),
-                            ),
-                            SizedBox(height: 15.w,),
-                            Row(
-                              children: [
-                                Container(
-                                  child:
-                                  BackShaderText(text:AppText.homeTip, fontWeight: null, padding: EdgeInsets.only(top: 7.w,left: 20.w,right: 20.w,bottom: 7.w), circular: 7.w,),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 20.w,),
-                            Container(
+                          );
+                        }),
+                      ),
 
-                                padding: EdgeInsets.all(15.w),
-                                decoration: BoxDecoration(
-                                  color: AppColors.greenF6,
-                                  borderRadius: BorderRadius.circular(11.w),
-                                ),
-                                child:
-                                Text("尽量采用蒸、煮的方式制作腐皮卷，避免油炸或油煎，减少油脂摄入。蒸制的腐皮卷既能保留食材的营养成分，又更加清爽健康。如果喜欢酥脆口感，可使用空气炸锅，以少量油达到类似油炸的效果。",
-                                  style: TextStyle(
-                                      color: AppColors.greenB33,
-                                      fontSize: 12.w
-                                  ),
-                                )
-                            ),
-                            GridView.count(
-                              crossAxisCount: 4, // 每行4个
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              shrinkWrap: true, // 不滚动时加上
-                              physics: NeverScrollableScrollPhysics(), // 禁止内部滚动
-                              children: ingredients.map((item) {
-                                return Container(
-                                    alignment: Alignment.center,
-                                    padding: EdgeInsets.all(8),
-                                    child: Row(
-                                      children: [
-                                        Image.asset("assets/slices/收藏.png",width: 25.w,),
-                                        Text("90分钟",style: TextStyle(
-                                          fontSize: 11.w,
-                                        ),)
-                                      ],
-                                    )
-                                );
-                              }).toList(),
-                            ),
-                            FoodIngredientsItemView(),
-                            StepItemView(),
-                            StepItemView(),
-                            StepItemView(),
-                          ],
-                        )
-                      )
-
+                      SizedBox(height: 20.h,),
+                      FoodIngredientsItemView(),
+                      Column(
+                        children: List.generate(ingredients.length, (index) {
+                          return Padding(
+                            padding: EdgeInsets.only(bottom: 20.h), // 控制每个 StepItemView 的间距
+                            child: StepItemView(),
+                          );
+                        }),
+                      ),
 
 
                     ],
                   ),
                 )
 
-              ],
-            )
-        )
 
+              ),
+            ]),
+          ),
+        ],
+      ),
     );
   }
+
 }

@@ -52,7 +52,7 @@ class _MyItemState extends State<MyItem> {
               width: 120.w,
               height: 40.h,
               child:
-              BackShaderDeText(text: AppText.vegetarianRecordLabel),
+              BackShaderDeText(text: AppText.vegetarianRecordLabel, borderRadius: null,),
             )
 
 

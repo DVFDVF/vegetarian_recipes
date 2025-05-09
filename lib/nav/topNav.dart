@@ -6,12 +6,14 @@ import 'package:vegetarian_recipes/text/noText.dart';
 import 'package:vegetarian_recipes/views/home/evaluate.dart';
 
 class TopNav extends StatefulWidget {
+  final void Function(int) onTabTapped;
+  const TopNav({super.key,  required this.onTabTapped});
   @override
   _TopNavState createState() => _TopNavState();
 }
 
 class _TopNavState extends State<TopNav> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   final List<String> _tabs = [
     '推荐', '热门', '科技', '体育', '娱乐',
     '财经', '时尚', '美食', '旅游', '健康'
@@ -42,11 +44,11 @@ class _TopNavState extends State<TopNav> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
-
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
                           _selectedIndex = index;
+                          widget.onTabTapped(index);
                         });
                       },
                       child: TabText(isSelected: _selectedIndex == index, text: _tabs[index]),

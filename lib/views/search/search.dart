@@ -25,53 +25,50 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body:
-        Container(
-            padding: EdgeInsets.only(left: 15,right: 15),
-            child:
-            ListView(
+    return    Container(
+        padding: EdgeInsets.only(left: 15.h,right: 15.h,top: 10.h),
+        child:
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20.h,),
+            Text("节气分类",
+              style: TextStyle(
+                fontSize: 13.h,
+                fontWeight: FontWeight.bold,
+                color: AppColors.greyBD,
+              ),
+
+            ),
+            SizedBox(height: 20.h,),
+            GridView.builder(
               shrinkWrap: true,
-              children: [
-                SearchInput(text: AppText.searchHint, color: AppColors.greyBD, backColor: AppColors.greyF3),
-                SizedBox(height: 20.h,),
-                Text("节气分类",
-                  style: TextStyle(
-                    fontSize: 13.h,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.greyBD,
-                  ),
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4,crossAxisSpacing: 10.h,mainAxisSpacing: 10.h,mainAxisExtent: 35.h,),
+              itemCount: 20,
+              itemBuilder: (context, index) => SolarTerms(text: "春分", color:AppColors.greenF90,backColor: AppColors.green90,),
+            ),
 
-                ),
-                SizedBox(height: 20.h,),
-                GridView.builder(
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4,crossAxisSpacing: 10.h,mainAxisSpacing: 10.h,mainAxisExtent: 35.h,),
-                  itemCount: 20,
-                  itemBuilder: (context, index) => SolarTerms(text: "春分", color:AppColors.greenF90,backColor: AppColors.green90,),
-                ),
+            SizedBox(height: 20.h,),
+            Text("节气分类",
+              style: TextStyle(
+                fontSize: 13.h,
+                fontWeight: FontWeight.bold,
+                color: AppColors.greyBD,
+              ),
 
-                SizedBox(height: 20.h,),
-                Text("节气分类",
-                  style: TextStyle(
-                    fontSize: 13.h,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.greyBD,
-                  ),
+            ),
+            SizedBox(height: 20.h,),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5 ,crossAxisSpacing: 10.h,mainAxisSpacing: 10.h,mainAxisExtent: 35.h,),
+              itemCount: 20,
+              itemBuilder: (context, index) => Dish(image: "https://img0.baidu.com/it/u=2283918562,1184992500&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500", text: "面"),
+            ),
 
-                ),
-                SizedBox(height: 20.h,),
-                GridView.builder(
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5 ,crossAxisSpacing: 10.h,mainAxisSpacing: 10.h,mainAxisExtent: 35.h,),
-                  itemCount: 20,
-                  itemBuilder: (context, index) => Dish(image: "https://img0.baidu.com/it/u=2283918562,1184992500&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500", text: "面"),
-                ),
-
-              ],
-            )
+          ],
         )
-
     );
   }
 }

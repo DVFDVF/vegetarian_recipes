@@ -1,10 +1,12 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vegetarian_recipes/button/noBtn.dart';
 import 'package:vegetarian_recipes/configuration%20/app_colors.dart';
 import 'package:vegetarian_recipes/configuration%20/app_text.dart';
 import 'package:vegetarian_recipes/text/noText.dart';
+import 'package:vegetarian_recipes/views/message/messageJoin.dart';
 class HorizontalPageView extends StatelessWidget {
   final List<String> imageUrls = [
     'http://gips1.baidu.com/it/u=8355271,1357180122&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960',
@@ -72,7 +74,7 @@ class _HorizontalScollView extends State< HorizontalScollView>  {
                   ),
                 ),
                 SizedBox(height: 20,),
-                Text("香酥可口！",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
+                Text("香酥可口！",style: TextStyle(color: Colors.black,fontSize: 13.h,fontWeight: FontWeight.bold),),
               ]
 
             )
@@ -225,7 +227,8 @@ class _HomeContentTopImageItemViewState extends State<HomeContentTopImageItemVie
                     alignment: Alignment.topLeft,
                     children: [
                       ClipRRect(
-                        child:   Image.network("http://gips1.baidu.com/it/u=8355271,1357180122&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",fit: BoxFit.fill,height: 300.h,),
+                        child:   Image.network("http://gips1.baidu.com/it/u=8355271,1357180122&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",fit: BoxFit.cover,height: 300.h,width: double.infinity,
+                        ),
                       ),
                     ],
                   ),
@@ -291,7 +294,28 @@ class PlanItemView extends StatelessWidget {
                       child: SizedBox(
                         width: double.infinity,
                         height: 50.h,
-                        child:  BackShaderText(text: AppText.appDiscoverEventJoin, fontWeight: null, padding: null, circular: null,),
+                        child:
+                        InkWell(
+                          onTap: ()=>{
+                            showModalBottomSheet(
+                              isScrollControlled: true,
+                              context: context,
+                              isDismissible: true,
+                              clipBehavior: Clip.antiAlias,
+
+                              builder: (BuildContext context) {
+                                return
+                                  MessageJoin();
+
+                              },
+                            )
+
+
+
+
+                        },
+                          child: BackShaderText(text: AppText.appDiscoverEventJoin, fontWeight: null, padding: null, circular: null,),
+                        )
                       ),
                     ),
 
@@ -379,7 +403,6 @@ class StepItemView extends StatelessWidget {
               Row(
                 children: [
                   Container(
-
                     child:
                     BackShaderText(text:"步骤一", fontWeight: null, padding: EdgeInsets.only(top: 7.w,left: 20.w,right: 20.w,bottom: 7.w), circular: 7.w,),
                   ),

@@ -6,7 +6,10 @@ import 'package:vegetarian_recipes/tabbar/tabbar.dart';
 import 'package:vegetarian_recipes/utils/GlobalState.dart';
 import 'package:vegetarian_recipes/views/add/add.dart';
 import 'package:vegetarian_recipes/views/add/addContent.dart';
+import 'package:vegetarian_recipes/views/add/addContentItem.dart';
 import 'package:vegetarian_recipes/views/home/home.dart';
+import 'package:vegetarian_recipes/views/login/login.dart';
+import 'package:vegetarian_recipes/views/login/phoneLogin.dart';
 import 'package:vegetarian_recipes/views/search/search.dart';
 
 void main() {
@@ -60,7 +63,13 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: MyHomePage(),
+      home:
+      Container(
+        color: Colors.white,
+        child:
+        Login(),
+      )
+
     );
   }
 }
